@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Modern.Analytics;
+﻿namespace Modern.Grpc;
 
 [AttributeUsage(AttributeTargets.All)]
 public class ReflectAttribute : Attribute
@@ -16,5 +14,4 @@ public class ReflectAttribute : Attribute
     {
         Reflect = reflect;
     }
-
 }

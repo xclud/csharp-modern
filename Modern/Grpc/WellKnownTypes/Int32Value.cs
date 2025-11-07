@@ -1,4 +1,4 @@
-﻿namespace Modern.Grpc;
+﻿namespace Modern.Grpc.WellKnownTypes;
 
 public sealed record Int32Value : IMessage<Int32Value>
 {
@@ -21,4 +21,7 @@ public sealed record Int32Value : IMessage<Int32Value>
     {
         writer.Write(1, Value);
     }
+
+    public static implicit operator Int32Value(int value) => new() { Value = value };
+    public static implicit operator int(Int32Value value) => value.Value;
 }

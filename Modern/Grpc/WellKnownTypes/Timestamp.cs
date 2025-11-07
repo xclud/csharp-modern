@@ -1,6 +1,6 @@
-﻿namespace Modern.Grpc;
+﻿namespace Modern.Grpc.WellKnownTypes;
 
-internal sealed record Timestamp : IMessage<Timestamp>
+public sealed record Timestamp : IMessage<Timestamp>
 {
     public readonly long Seconds;
     public readonly int Nanos;
@@ -32,4 +32,7 @@ internal sealed record Timestamp : IMessage<Timestamp>
         writer.Write(1, Seconds);
         writer.Write(2, Nanos);
     }
+
+    //public static implicit operator DateTime(Timestamp timestamp);
+    public static implicit operator Timestamp(DateTime dateTime) => FromDateTime(dateTime);
 }
