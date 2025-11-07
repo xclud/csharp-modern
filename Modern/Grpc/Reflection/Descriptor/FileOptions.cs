@@ -1,0 +1,170 @@
+﻿namespace Modern.Grpc.Reflection.Descriptor;
+
+/// <summary>
+/// <para>Each of the definitions above may have "options" attached.  These are
+/// just annotations which may cause code to be generated slightly differently
+/// or may contain hints for code that manipulates protocol messages.</para>
+///
+/// <para>Clients may define custom options as extensions of the *Options messages.
+/// These extensions may not yet be known at parsing time, so the parser cannot
+/// store the values in them.  Instead it stores them in a field in the *Options
+/// message called uninterpreted_option. This field must have the same name
+/// across all *Options messages. We then use this field to populate the
+/// extensions when we build a descriptor, at which point all protos have been
+/// parsed and so all extensions are known.</para>
+///
+/// <para>Extension numbers for custom options may be chosen as follows:
+/// <list type="bullet">
+/// <item>
+/// For options which will only be used within a single application or
+/// organization, or for experimental options, use field numbers 50000
+/// through 99999.  It is up to you to ensure that you do not use the
+/// same number for multiple options.</item>
+/// For options which will be published and used publicly by multiple
+/// independent entities, e-mail protobuf-global-extension-registry@google.com
+/// to reserve extension numbers. Simply provide your project name (e.g.
+/// Objective-C plugin) and your project website (if available) -- there's no
+/// need to explain how you intend to use them. Usually you only need one
+/// extension number. You can declare multiple options with only one extension
+/// number by putting them in a sub-message. See the Custom Options section of
+/// the docs for examples:
+/// https://developers.google.com/protocol-buffers/docs/proto#options
+/// If this turns out to be popular, a web service will be set up
+/// to automatically assign option numbers.
+/// </list></para>
+/// </summary>
+
+public sealed record FileOptions : IMessage<FileOptions>
+{
+
+    //  // Sets the Java package where classes generated from this .proto will be
+    //  // placed.  By default, the proto package is used, but this is often
+    //  // inappropriate because proto packages do not normally start with backwards
+    //  // domain names.
+    //  public string? java_package; // 1
+
+
+    //  // If set, all the classes from the .proto file are wrapped in a single
+    //  // outer class with the given name.  This applies to both Proto1
+    //  // (equivalent to the old "--one_java_file" option) and Proto2 (where
+    //  // a .proto always translates to a single class, but you may want to
+    //  // explicitly choose the class name).
+    //  public string? java_outer_classname; // 8
+
+    //  // If set true, then the Java code generator will generate a separate .java
+    //  // file for each top-level message, enum, and service defined in the .proto
+    //  // file.  Thus, these types will *not* be nested inside the outer class
+    //  // named by java_outer_classname.  However, the outer class will still be
+    //  // generated to contain the file's getDescriptor() method as well as any
+    //  // top-level extensions defined in the file.
+    //  public bool? java_multiple_files = 10 [default = false];
+
+    //  // This option does nothing.
+    //  public bool? java_generate_equals_and_hash = 20 [deprecated=true];
+
+    //  // If set true, then the Java2 code generator will generate code that
+    //  // throws an exception whenever an attempt is made to assign a non-UTF-8
+    //  // byte sequence to a string field.
+    //  // Message reflection will do the same.
+    //  // However, an extension field still accepts non-UTF-8 byte sequences.
+    //  // This option has no effect on when used with the lite runtime.
+    //  public bool? java_string_check_utf8 = 27 [default = false];
+
+
+    //  // Generated classes can be optimized for speed or code size.
+    //  enum OptimizeMode {
+    //    SPEED = 1;         // Generate complete code for parsing, serialization,
+    //                       // etc.
+    //    CODE_SIZE = 2;     // Use ReflectionOps to implement these methods.
+    //    LITE_RUNTIME = 3;  // Generate code using MessageLite and the lite runtime.
+    //  }
+    //  optional OptimizeMode optimize_for = 9 [default = SPEED];
+
+    //  // Sets the Go package where structs generated from this .proto will be
+    //  // placed. If omitted, the Go package will be derived from the following:
+    //  //   - The basename of the package import path, if provided.
+    //  //   - Otherwise, the package statement in the .proto file, if present.
+    //  //   - Otherwise, the basename of the .proto file, without extension.
+    //  public string? go_package; // 11
+
+
+
+
+    //  // Should generic services be generated in each language?  "Generic" services
+    //  // are not specific to any particular RPC system.  They are generated by the
+    //  // main code generators in each language (without additional plugins).
+    //  // Generic services were the only kind of service generation supported by
+    //  // early versions of google.protobuf.
+    //  //
+    //  // Generic services are now considered deprecated in favor of using plugins
+    //  // that generate code specific to your particular RPC system.  Therefore,
+    //  // these default to false.  Old code which depends on generic services should
+    //  // explicitly set them to true.
+    //  public bool? cc_generic_services = 16 [default = false];
+    //  public bool? java_generic_services = 17 [default = false];
+    //  public bool? py_generic_services = 18 [default = false];
+    //  public bool? php_generic_services = 42 [default = false];
+
+    //  // Is this file deprecated?
+    //  // Depending on the target platform, this can emit Deprecated annotations
+    //  // for everything in the file, or it will be completely ignored; in the very
+    //  // least, this is a formalization for deprecating files.
+    //  public bool? deprecated = 23 [default = false];
+
+    //  // Enables the use of arenas for the proto messages in this file. This applies
+    //  // only to generated classes for C++.
+    //  public bool? cc_enable_arenas = 31 [default = true];
+
+
+    //  // Sets the objective c class prefix which is prepended to all objective c
+    //  // generated classes from this .proto. There is no default.
+    //  public string? objc_class_prefix; // 36
+
+    //  // Namespace for generated classes; defaults to the package.
+    //  public string? csharp_namespace; // 37
+
+    //  // By default Swift generators will take the proto package and CamelCase it
+    //  // replacing '.' with underscore and use that to prefix the types/symbols
+    //  // defined. When this options is provided, they will use this value instead
+    //  // to prefix the types/symbols defined.
+    //  public string? swift_prefix; // 39
+
+    //  // Sets the php class prefix which is prepended to all php generated classes
+    //  // from this .proto. Default is empty.
+    //  public string? php_class_prefix; // 40
+
+    //  // Use this option to change the namespace of php generated classes. Default
+    //  // is empty. When this option is empty, the package name will be used for
+    //  // determining the namespace.
+    //  public string? php_namespace; // 41
+
+    //  // Use this option to change the namespace of php generated metadata classes.
+    //  // Default is empty. When this option is empty, the proto file name will be
+    //  // used for determining the namespace.
+    //  public string? php_metadata_namespace; // 44
+
+    //  // Use this option to change the package of ruby generated classes. Default
+    //  // is empty. When this option is not set, the package name will be used for
+    //  // determining the ruby package.
+    //  public string? ruby_package; // 45
+
+
+    //  // The parser stores options it doesn't recognize here.
+    //  // See the documentation for the "Options" section above.
+    //  repeated UninterpretedOption uninterpreted_option; // 999
+
+    //  // Clients can define custom options in extensions of this message.
+    //  // See the documentation for the "Options" section above.
+    //  extensions 1000 to max;
+
+    //  reserved 38;
+    public static FileOptions Deserialize(byte[] bytes)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void WriteTo(CodedBufferWriter writer)
+    {
+        throw new NotImplementedException();
+    }
+}
