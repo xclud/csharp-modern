@@ -1,0 +1,9 @@
+*.suo
+*.usr
+*.user
+/**/.vscode
+/**/.vs
+/**/bin
+/**/obj
+/**/__pycache__
+/**/node_modules
