@@ -61,7 +61,7 @@ public sealed record MessageOptions : IMessage<MessageOptions>
 
 
     //  // The parser stores options it doesn't recognize here. See above.
-    //  repeated UninterpretedOption uninterpreted_option; // 999
+    public List<UninterpretedOption> UninterpretedOptions = []; // 999
 
     //  // Clients can define custom options in extensions of this message. See above.
     //  extensions 1000 to max;
